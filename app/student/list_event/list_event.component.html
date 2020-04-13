@@ -1,0 +1,43 @@
+<style>
+  body {background-color: powderblue;}
+  h1   {color: blue;}
+  .row {
+  display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  padding: 10px;
+   /* Should be removed. Only for demonstration */
+}
+
+</style>
+  <div class='row'>
+  <div class='column'>
+    <h1>Upcoming Events</h1>
+    <ul id="outerlist1">
+      <li *ngFor="let event of this.upcoming">
+        <ul>{{ event[2] }}</ul>
+        <ul>Event Id: {{ event[0] }}</ul>
+        <ul>Date: {{ event[5] }}</ul>
+        <ul>Venue: {{ event[6] }}</ul>
+        <ul>Participants per team: {{ event[8] }} </ul>
+      </li>
+    </ul>
+  </div>
+  <div class='column'>
+    <h1>Events you took part in</h1>
+    <ul id="outerlist2">
+    <li *ngFor="let event of this.past">
+      <ul>{{ event[2] }}</ul>
+      <ul>Event Id: {{ event[0] }}</ul>
+      <ul>Date: {{ event[5] }}</ul>
+      <ul>Venue: {{ event[6] }}</ul>
+      <ul>Participants per team: {{ event[8] }} </ul>
+
+      </li>
+    </ul>
+  </div>
+</div>
+<router-outlet></router-outlet>

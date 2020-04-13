@@ -1,0 +1,12 @@
+<h2>Login</h2>
+<form [formGroup]="credentialsForm" (submit)="checkCred(op1.checked ? op1.value : op2.value)">
+  <label for="email">Email:</label>
+  <input formControlName="email" type="email" id="email" name="email" placeholder="Enter Email"><br>
+  <label for="password">Password:</label>
+  <input formControlName="password" type="password" id="password" name="password" placeholder="Enter password"><br>
+  <label for="account_type">Sign in as: </label>
+  <input #op1 type="radio" id="organiser" name="account_type" value="organiser">Organiser
+  <input #op2 type="radio" id="student" name="account_type" value="student">Student
+  <br>
+  <button type="submit">Submit</button>
+</form>

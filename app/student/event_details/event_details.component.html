@@ -1,0 +1,28 @@
+
+<div  align= "center" *ngFor="let event of this.eventData" >
+
+  <h3>{{ event[2] }}</h3>
+  Event Type: {{ event[4] }} &nbsp; &nbsp; &nbsp;
+  <br/><br/>Date: {{ event[5] }} &nbsp; &nbsp; &nbsp;
+  <br/><br/>Venue: {{ event[6] }} &nbsp; &nbsp; &nbsp;
+  <br/><br/>Fee: Rs. {{ event[7] }} &nbsp; &nbsp; &nbsp;
+  <br/><br/>Team Size {{ event[8] }} &nbsp; &nbsp; &nbsp;
+  <br/><br/> Enter team members(ids): <input type="text" id="inp" placeholder="eg.[1,2,3]">
+  <br/><br/> <p id="invalid"></p>
+
+  <br/><br/><button type='submit' (click)="showorg()"> Contact Organiser </button> &nbsp; &nbsp; &nbsp;
+  <button type='submit'> Make Payment</button> &nbsp; &nbsp; &nbsp;
+  <br/><br/><button type="submit" (click)="reg()">Done</button>
+  <br/><br/>
+<div id="org" style="display:none">
+  <div   *ngFor="let org of this.orgData" >
+     Name :{{org[1]}} &nbsp; {{org[2]}}
+    <br/>Email :{{org[3]}}
+  </div>
+  </div>
+
+  <div id="orgn"></div>
+
+</div>
+
+

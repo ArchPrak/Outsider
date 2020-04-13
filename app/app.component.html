@@ -1,0 +1,24 @@
+<nav class = "navbar navbar-expand-sm navbar-inverse horizontal">
+  <div class="container-fluid">
+    <div class="justify-component-md-center" id="navbar1">
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a routerLink='/' class='nav-link'><i>Home</i></a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="!show() && !check()" routerLink='/login' class='nav-link'><i>Login</i></a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="show() && check()" routerLink='/profile' class='nav-link'><i>Profile</i></a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="!show() && !check()" routerLink='/register' class='nav-link'><i>Register</i></a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="show() && check()" routerLink='/' class='nav-link'><i (click)="setempty()">Logout</i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

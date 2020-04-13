@@ -1,0 +1,21 @@
+
+<h1> Make your team. </h1>
+<hr>
+<h2>We found users with interests similar to yours! Contact them now and create your team.</h2>
+<table id="prizes" cellspacing="20">
+        <tr>
+            <th *ngFor="let column of headers">
+                {{column}}
+            </th>
+        </tr>
+
+        <tr *ngFor="let row of this.serverData">
+            <td >
+                {{row[1]}}
+            </td>
+            <td >
+              {{row[3]}}
+          </td>
+        </tr>
+
+</table>

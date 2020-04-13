@@ -1,0 +1,29 @@
+<!--<ul>
+
+  <li *ngFor="let event of this.serverData">
+    <ul>{{ event[0] }}</ul>
+    <ul>{{event[1]}}</ul>
+
+   </li>
+</ul>-->
+
+<h1>You're always a winner! </h1>
+<hr>
+<table id="prizes">
+        <tr>
+            <th *ngFor="let column of headers">
+                {{column}}
+            </th>
+        </tr>
+
+        <tr *ngFor="let row of this.serverData">
+            <td >
+                {{row[0]}}
+            </td>
+            <td >
+              {{row[1]}}
+          </td>
+        </tr>
+
+</table>
+
