@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+  <p>How much do you want to allocate?</p>
+  <mat-form-field>
+    <mat-label>Amount: </mat-label>
+    <input matInput [(ngModel)]="amount">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onClick()" cdkFocusInitial>Ok</button>
+</div>

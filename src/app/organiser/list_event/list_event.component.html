@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let event of this.serverData">
+    <ul>{{ event[2] }}</ul>
+    <ul>Total funds allocated: {{ event[1] }}</ul>
+    <ul>Event type: {{ event[4] }} </ul>
+    <ul>Date: {{ event[5] }}</ul>
+    <ul>Venue: {{ event[6] }}</ul>
+    <ul>Participants per team: {{ event[8] }} </ul>
+    <button (click)="fund(event)">Record Expense</button>
+  </li>
+</ul>

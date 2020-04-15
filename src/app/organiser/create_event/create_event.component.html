@@ -1,0 +1,21 @@
+<h2>Create Event</h2>
+<form [formGroup]="eventForm" (submit)="newEvent()">
+  <label for="event_name">Event Name:</label>
+  <input formControlName="event_name" type="text" id="event_name" name="event_name" placeholder="Enter Event Name" required>
+  <br>
+  <label for="event_type">Event Type:</label>
+  <input formControlName="event_type" type="text" id="event_type" name="event_type" placeholder="Enter Event Type" required><br>
+  <label for="event_date">Event Date:</label>
+  <input formControlName="event_date" type="date" id="event_date" name="event_date" placeholder="Enter Event Date" required><br>
+  <label for="event_venue">Event Venue:</label>
+  <input formControlName="event_venue" type="text" id="event_venue" name="event_venue" placeholder="Enter Event Venue" required><br>
+  <label for="max_par">Maximum Participants:</label>
+  <input formControlName="max_par" type="number" id="max_par" name="max_par" placeholder="Enter Maximum Participants Per Team" required><br>
+  <label for="fee">Fee per team:</label>
+  <input formControlName="fee" type="number" id="fee" name="fee" placeholder="Enter fee per team" required><br>
+  <label for="max_teams">Max number of teams:</label>
+  <input formControlName="max_teams" type="number" id="max_teams" name="max_teams" placeholder="Enter max number of teams allowed" required><br>
+  <label for="funds">Funds Allocated:</label>
+  <input formControlName="funds" type="number" id="funds" name="funds" placeholder="Funds allocated for event" required><br>
+  <button type="submit" ng-disable="infoForm.$invalid">Submit</button>
+</form>

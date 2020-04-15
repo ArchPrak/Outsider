@@ -25,7 +25,133 @@ def create_table(conn, create_table_sql):
       conn.commit()
   except Error as e:
       print(e)
+@app.route("/student/info",methods=["POST"])
+def info():
+    sid=request.get_json()["student_id"]
+    database = r"pythonsqlite.db"
+    conn = create_connection(database)
+    cur = conn.cursor()
 
+    res=cur.execute("SELECT * from students where s_id=" + str(sid)+";")
+    res=list(res)
+    return jsonify(res),200
+
+@app.route("/student/regchk",methods=["POST"])
+def checkreg():
+
+    # checking if team size is within limit
+    team =request.get_json()["team"]
+    sid=request.get_json()["student_id"]
+    eid=request.get_json()["e_id"]
+    team=eval(team)
+    print("Received data")
+    #check if  within team size
+    database = r"pythonsqlite.db"
+    conn = create_connection(database)
+    cur = conn.cursor()
+    q="select e_tsize from event where e_id=" + str(eid) + ";"
+    res=cur.execute(q)
+    res=list(res)
+    if len(team)>res[0][0]:
+      return jsonify({"message":"Team limit exceeded!"}),200
+
+
+    #checking if team members are valid
+    q="select s_id from students;"
+    res=cur.execute(q)
+    res=list(res)
+    s=set()
+    for row in res:
+      s.add(row[0])
+    final=[]
+    for mem in team:
+      if mem not in s:
+        final.append(str(mem))
+
+    if final:
+        if len(final)==1:
+            return jsonify({"message":"Invalid team member ID: "+str(final[0])}),200
+        elif len(final)>1:
+            return jsonify({"message":"Invalid team member IDs: "+ ",".join(final)}),200
+
+
+    #checking if already registered
+    team.append(sid)
+    q="select r_id, student_id from registration where e_id=" + str(eid) + ";"
+    res=cur.execute(q)
+    res=list(res)
+    if (len(res)==0):
+      return jsonify({"message":"successful"}),200
+    ridlist=[]
+    sidlist=[]
+    for row in res:
+      ridlist.append(str(row[0]))
+      sidlist.append(row[1])
+    q="select members from rteam where r_id in ( " + ",".join(ridlist) +");"
+    res=cur.execute(q)
+    res=list(res)
+    for row in res:
+      l=eval(row[0])
+      sidlist.extend(l)
+    s=set(sidlist) # set of all sids who have registered for this event
+    final=[]
+    for mem in team:
+      if mem in s:
+        final.append(str((mem)))
+
+    if final:
+      if len(final)==1:
+        return jsonify({"message":"Member " +str(final[0])+" has already registered for this event."}),200
+      else:
+        return jsonify({"message":"Members "+",".join(final)+ " have already registered for this event."}),200
+
+    return jsonify({"message":"successful"}),200
+'''
+@app.route("/student/checksize",methods=["POST"])
+def checksize():
+    team =request.get_json()["team"]
+    sid=request.get_json()["student_id"]
+    eid=request.get_json()["e_id"]
+    team=eval(team)
+    #check if  within team size
+    database = r"pythonsqlite.db"
+    conn = create_connection(database)
+    cur = conn.cursor()
+    q="select e_tsize from event where e_id=" + str(eid) + ";"
+    res=cur.execute(q)
+    res=list(res)
+    if len(team)>res[0][0]:
+      return jsonify(["Team limit exceeded!"]),200
+    return jsonify([]),200
+'''
+
+def checkmem(sid,eid):
+    database = r"pythonsqlite.db"
+    conn = create_connection(database)
+    cur = conn.cursor()
+
+    q="select r_id, student_id from registration where e_id=" + str(eid) + ";"
+    res=cur.execute(q)
+    res=list(res)
+    if (len(res)==0):
+      return False
+    ridlist=[]
+    sidlist=[]
+    for row in res:
+      ridlist.append(str(row[0]))
+      sidlist.append(row[1])
+    q="select members from rteam where r_id in ( " + ",".join(ridlist) +");"
+    res=cur.execute(q)
+    res=list(res)
+    for row in res:
+      l=eval(row[0])
+      sidlist.extend(l)
+    s=set(sidlist) # set of all sids who have registered for this event
+    if sid in s:
+      return True
+    return False
+
+'''
 @app.route("/student/checkteam",methods=["POST"])
 def checkteam():
     team =request.get_json()["team"]
@@ -44,6 +170,7 @@ def checkteam():
       if mem not in s:
         final.append(mem)
     return jsonify(final),200
+'''
 
 @app.route("/student/eventdet",methods=["POST"])
 def eventdet():
@@ -79,18 +206,32 @@ def listall():
   conn = create_connection(database)
   cur = conn.cursor()
   q1="Select e_id, e_maxpar from EVENT";
-  res=cur.execute(q1)
-  res=list(res)
+  res1=cur.execute(q1)
+  res1=list(res1)
   dmax={}
-  for row in res:
-    dmax[row[0]]=row[1] # eid : maxpar
-  q2="select e_id, count(*) from registration group by e_id";
-  res=cur.execute(q2)
-  res=list(res)
   final=[]
-  for row in res:
+  for row in res1:
+    dmax[row[0]]=row[1] # eid : maxpar
+
+  q2="select e_id, count(*) from registration group by e_id";
+  res2=cur.execute(q2)
+  res2=list(res2)
+  s=set()
+  for row in res2:
+    s.add(row[0])
+  #print("RRRR",res)
+  final=[]
+  for row in res2:
     if row[1] < dmax[row[0]]:
       final.append(str(row[0]))
+
+
+  for row in res1:
+    if row[0] not in s and dmax[row[0]]!=0:
+      final.append(str(row[0]))
+
+  print("#########",final)
+
   q3="select * from event where e_id in ("+ ",".join(final) + ");"
   res=cur.execute(q3)
   res=list(res)
@@ -99,8 +240,8 @@ def listall():
   return jsonify(res),200
 
 
-@app.route("/student/pie",methods=["POST"])
-def pie():
+@app.route("/student/pie1",methods=["POST"])
+def pie1():
     s_id =request.get_json()["student_id"]
     database = r"pythonsqlite.db"
     conn = create_connection(database)
@@ -122,6 +263,38 @@ def pie():
             #dnew[h]=d[h.lower()]
     #s=[{"name" :"sing", "y":2}]
     return jsonify(l),200
+@app.route("/student/pie2",methods=["GET"])
+def pie2():
+
+    database = r"pythonsqlite.db"
+    conn = create_connection(database)
+    cur = conn.cursor()
+    query1=" select e_id ,count(*) tot from registration group by e_id order by tot desc;"
+    res1=cur.execute(query1)
+    res1=list(res1)
+    res1=res1[:5]
+    print(res1)
+
+    query2="SELECT e_id,e_name FROM EVENT;"
+    res2=cur.execute(query2)
+    res2=list(res2)
+    devents={}
+    for row in res2:
+        devents[row[0]]=row[1] # {eid:ename}
+
+    d={}
+    for row in res1:
+      eid=row[0]
+      ename=devents[eid]
+      print( ename, row[1])
+      d[ename]=row[1] # e_name : count
+    print(d)
+    l=[]
+    for ev in d:
+      l.append({"name":ev,"y":d[ev]})
+    return jsonify(l),200
+
+
 
 
 
@@ -261,14 +434,23 @@ def reg_event():
     cur=con.cursor()
     req=request.get_json()
     stud_id = req['student_id']
-    event_name=req['event_name']
+
+    event_id=req['e_id']
+
+    #event_name=req['event_name']
     team_members=req['team_members']
     print("Inside here")
-    q="SELECT e_id from event where e_name='"+ event_name+ "';"
-    cur.execute(q)
-    res=cur.fetchall()
-    event_id=int(res[0][0])
+    #q="SELECT e_id from event where e_name='"+ event_name+ "';"
+    #cur.execute(q)
+    #res=cur.fetchall()
+    #event_id=int(res[0][0])
     #event_id= req['event_id']
+    if len(eval(team_members))==0:
+      if(checkmem(stud_id,event_id)):
+        print("error")
+        return jsonify({"status":"already registered"}),200
+
+
 
     query1="INSERT INTO registration(e_id,student_id,prize) VALUES(" +str( event_id ) + "," +"'" +str(stud_id) +"'"+ ", '-' );"
     cur.execute(query1)
@@ -298,6 +480,12 @@ def display_events():
   for row in res:
     if int(stud_id) in eval(row[1]):
       res1.append(row[0])
+  qry="select r_id from registration where student_id="+str(stud_id)+";"
+  ans=cur.execute(qry)
+  ans=list(ans)
+  print(ans)
+  for row in ans:
+    res1.append(row[0])
   query2="SELECT r_id,e_id from registration; "
   res2=cur.execute(query2)
   res2=list(res2)
@@ -307,6 +495,7 @@ def display_events():
     d[row[0]]=row[1] #{r_id: e_id}
 
   res=[]
+  res1=set(res1)
   for r_id in res1:
     e_id=d[r_id]
     q="SELECT * FROM EVENT WHERE e_id=" + str(e_id) + ";"

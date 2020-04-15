@@ -1,0 +1,15 @@
+<div mat-dialog-content>
+  <p>Team Details </p>
+  <mat-form-field>
+    <mat-label>Enter Team member IDs : </mat-label>
+    <input (change)="mess2()"  type="text" matInput [(ngModel)]="team_mem" required placeholder="eg. 1,2,3">
+  </mat-form-field>
+
+
+<div *ngIf="message1">{{ message1 }}</div>
+<div *ngIf="message2">{{ message2 }}</div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClick()" class="btn waves-effect waves-light">Ok</button> &nbsp; &nbsp;&nbsp;
+  <button mat-button (click)="onNoClick()" class="btn waves-effect waves-light">Close</button>
+</div>

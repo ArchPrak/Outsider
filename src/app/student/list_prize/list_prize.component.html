@@ -1,0 +1,42 @@
+<style>.style1 {
+  font-family: "Pacifico", sans-serif;
+  text-transform: none!important;
+  color: white;
+}
+</style>
+<body style="background-color: #004d40;">
+  <h1  class="style1" style="color: floralwhite;">You're always a winner! </h1>
+  <hr>
+  <div style="margin-left: 100px;float: left; margin-top: 20px;">
+    <table mat-table class="mat-elevation-z8" style="background-color: #69f0ae;" id="prizes" cellspacing="20" >
+      <tr mat-row>
+        <th mat-header-cell style="font: large;" *ngFor="let column of headers">
+          {{column}}
+        </th>
+      </tr>
+      <tr mat-row *ngFor="let row of this.serverData">
+        <td mat-cell>
+          {{row[0]}}
+        </td>
+        <td mat-cell >
+          {{row[1]}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div style="margin-left: 500px;float:left ;margin-top: 20px;">
+    <table mat-table class="mat-elevation-z8" style="background-color: #69f0ae;" id="prizes" cellspacing="20" >
+      <div class="column">
+        <h2>Account Details</h2>
+       <p>First Name :  {{this.info[0][1]}}<br>
+        Last Name: {{this.info[0][2]}}<br>
+        User Id : {{this.info[0][0]}}<br>
+        Email : {{this.info[0][3]}}<br>
+        Phone number; {{this.info[0][5]}}<br>
+        Stream : {{this.info[0][6]}}<br>
+      </p>
+      </div>
+    </table>
+  </div>
+</body>
+

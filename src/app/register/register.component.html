@@ -1,0 +1,16 @@
+<h2>Register</h2>
+<form [formGroup]="infoForm" (submit)="newUser()">
+  <label for="first_name">First Name:</label>
+  <input formControlName="first_name" type="first_name" id="first_name" name="first_name" placeholder="Enter First Name" required>
+  <br>
+  <label for="last_name">Last Name:</label>
+  <input formControlName="last_name" type="last_name" id="last_name" name="last_name" placeholder="Enter Last Name" required><br>
+  <label for="email">Email:</label>
+  <input formControlName="email" type="email" id="email" name="email" placeholder="Enter Email" required><br>
+  <label for="password">Password:</label>
+  <input formControlName="password" type="password" id="password" name="password" placeholder="Enter password" required><br>
+  <label for="phone_no">Phone no:</label>
+  <input formControlName="phone_no" type="phone_no" id="phone_no" name="phone_no" placeholder="Enter phone number" required><br>
+  <button type="submit" ng-disable="infoForm.$invalid">Submit</button>
+</form>
+<router-outlet></router-outlet>

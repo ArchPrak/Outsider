@@ -1,0 +1,28 @@
+mat-form-field {
+  margin: 10px;
+}
+.style1 {
+  font-family: "Pacifico", sans-serif;
+  text-transform: none!important;
+  color:black;
+}
+h5{
+  background-color: black;
+  color: white;
+  text-align: left;
+}
+
+.button4 {
+
+  margin-left:-50px;
+  width: max-content;
+  border-radius: 12px;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+  font-size: 16px;
+
+
+}

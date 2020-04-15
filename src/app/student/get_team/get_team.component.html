@@ -1,0 +1,32 @@
+<style>
+.style1 {
+  font-family: "Pacifico", sans-serif;
+  text-transform: none!important;
+  color: white;
+}
+
+</style>
+<body style="background-color:#40c4ff;">
+<div style="background-color: #006064; color: floralwhite;"><h1 class="style1">  Make your team. </h1> </div>
+<hr>
+<h2 >We found users with interests similar to yours! Contact them now and create your team.</h2>
+<div style="margin-left: 100px; margin-top: 20px;">
+<table  mat-table style="background-color: #b9f6ca;"  class="mat-elevation-z8" id="prizes" cellspacing="20">
+        <tr>
+            <th  style= "font-size:large;"  *ngFor="let column of headers" mat-header-cell >
+                {{column}}
+            </th>
+        </tr>
+
+        <tr  mat-row *ngFor="let row of this.serverData">
+            <td mat-cell>
+                {{row[1]}}
+            </td>
+            <td >
+              {{row[3]}}
+          </td>
+        </tr>
+
+</table>
+</div>
+</body>>
