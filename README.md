@@ -4,8 +4,8 @@ An enhanced, user friendly web based application where users can find and regist
 The Organiser can create events, allocate funds, view the profits made for his/her events. 
 The student/user can register for these events, view similar users, view the events they have registered for, etc. 
 
-Apart from these core functionalities, Outsider also provides event related statistics on both sides, for the organiser/student to be able to view trends and make inferences. 
-The performance of the Outsider Application was tested using <a href = "https://locust.io/">Locust</a>
+Apart from these core functionalities, *Outsider* also provides event related statistics on both sides, for the organiser/student to be able to view trends and make inferences. 
+The performance of the *Outsider* Application was tested using <a href = "https://locust.io/">Locust</a>
 ### Unique Selling Point
 *Outsider* as a portal provides a list of similar users on every user’s profile. This helps them connect with other people who have similar interests, which is not available on many of the event management websites that we presently see.
 The data visualisations on our website also form a unique aspect that guide the organiser and the user/student.
