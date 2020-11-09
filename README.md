@@ -19,8 +19,8 @@ The data visualisations on our website also form a unique aspect that guide the 
 ## Implementation Details
 ### Technologies
 <ul>
-  <li> Frontend: Angular	(HTML, CSS, TypeScript)</li>
-  <li> Backend: Python	(HTML, CSS, TypeScript)</li>
+  <li> Frontend: Angular (HTML, CSS, TypeScript)</li>
+  <li> Backend: Flask (Python)</li>
   <li> Database: SQLite </li>
  </ul>
 
@@ -41,7 +41,7 @@ The data visualisations on our website also form a unique aspect that guide the 
 ## Instructions to Run
 1. Setup your Angular environment: https://angular.io/guide/setup-local 
 1. Create a new app with the following command: `ng new outsider-app` 
-1. Clone this repository: git clone "https://github.com/ArchPrak/WT20Student/". Copy-paste the repository content into your app workspace directory.  
+1. Clone this repository: git clone "https://github.com/ArchPrak/Outsider/". Copy-paste the repository content into your app workspace directory.  
 1. Go into the workspace directory with the following command: `cd outsider-app` 
 1. Run the <i>Outsider</i> application with the following command: `ng serve` 
 1. Open another terminal and go into this workspace directory. Run the server file with: `python3 server.py`. This hosts the flask server on port 5000.
