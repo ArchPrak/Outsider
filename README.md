@@ -26,22 +26,22 @@ The data visualisations on our website also form a unique aspect that guide the 
 
 ### Techniques
 <ul><li>RESTful APIs <br/>
-	Every functionality of our website is written as  a 	separate microservice with flask. Each time a 	microservice is required, we make a call to the 	corresponding API.	
+	Every functionality of our website is written as  a separate microservice with flask. Each time a microservice is required, we make a call to the corresponding API.	
 </li>
 <li>	AJAX pattern - submission throttling <br/>
-    	Auto-complete mechanism for event searching on the	user/student side.
+    	Auto-complete mechanism for event searching on the user/student side.
 </li>
 </ul>
 
 ### Files/Folders
-  `server.py` implements the backend functionalities using flask
-  `ml.py` implements the intelligent functionalities
-  `src` folder contains the Angular code for the application
+1. `server.py` implements the backend functionalities using flask
+1. `ml.py` implements the intelligent functionalities
+1. `src` folder contains the Angular code for the application
 
 ## Instructions to Run
 1. Setup your Angular environment: https://angular.io/guide/setup-local 
 1. Create a new app with the following command: `ng new outsider-app` 
-1. Clone this repository: git clone "https://github.com/ArchPrak/Outsider/". Copy-paste the repository content into your app workspace directory.  
+1. Clone this repository: `git clone "https://github.com/ArchPrak/Outsider/"`. Copy-paste the repository content into your app workspace directory.  
 1. Go into the workspace directory with the following command: `cd outsider-app` 
 1. Run the <i>Outsider</i> application with the following command: `ng serve` 
 1. Open another terminal and go into this workspace directory. Run the server file with: `python3 server.py`. This hosts the flask server on port 5000.
