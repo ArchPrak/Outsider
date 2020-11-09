@@ -1,11 +1,60 @@
-<ul>
-  <li *ngFor="let event of this.serverData">
-    <ul>{{ event[2] }}</ul>
-    <ul>Total funds allocated: {{ event[1] }}</ul>
-    <ul>Event type: {{ event[4] }} </ul>
-    <ul>Date: {{ event[5] }}</ul>
-    <ul>Venue: {{ event[6] }}</ul>
-    <ul>Participants per team: {{ event[8] }} </ul>
-    <button (click)="fund(event)">Record Expense</button>
-  </li>
-</ul>
+<div class='row'>
+  <div class='column'>
+    <h2 style="text-align: center;"> Upcoming Events</h2>
+      <ul id="outerlist1">
+        <li *ngFor="let event of this.serverDataPresent">
+          <div class="row">
+            <div class="col s12 m6">
+              <div class="card black darken-1" id="card1">
+                <div class="card-content white-text">
+                  <span class="card-title">{{ event[2] }}</span><br>
+                    <ul>Total funds allocated: {{ event[1] }}</ul>
+                    <ul>Event type: {{ event[4] }} </ul>
+                    <ul>Date: {{ event[5] }}</ul>
+                    <ul>Venue: {{ event[6] }}</ul>
+                    <ul>Participants per team: {{ event[8] }} </ul>
+                    <ul>Funds remaining: {{ event[10] }}</ul>
+                </div>
+                <div class="card-action">
+                  <a class="waves-effect waves-light" (click)="fund(event)">Record Expense</a>
+                  <a class="waves-effect waves-light" (click)="expense_log(event)">Expense Log</a>
+                  <a class="waves-effect waves-light" (click)="give_prize(event)">Update Prizes</a>
+                  <a class="waves-effect waves-light" (click)="see_registrations(event)">See All Registrations</a>
+                  <a class="waves-effect waves-light" (click)="complete_event(event)">Complete Event</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+  </div>
+  <div class='column'>
+    <h2>Past Events</h2>
+      <ul id="outerlist2">
+        <li *ngFor="let event of this.serverDataPast">
+          <div class="row">
+            <div class="col s12 m6">
+              <div class="card black darken-1" id="card2">
+                <div class="card-content white-text">
+                  <span class="card-title">{{ event[2] }}</span><br>
+                    <ul>Total funds allocated: {{ event[1] }}</ul>
+                    <ul>Event type: {{ event[4] }} </ul>
+                    <ul>Date: {{ event[5] }}</ul>
+                    <ul>Venue: {{ event[6] }}</ul>
+                    <ul>Participants per team: {{ event[8] }} </ul>
+                    <ul>Funds remaining: {{ event[10] }}</ul>
+                </div>
+                <div class="card-action">
+                  <a class="waves-effect waves-light" (click)="fund(event)">Record Expense</a>
+                  <a class="waves-effect waves-light" (click)="expense_log(event)">Expense Log</a>
+                  <a class="waves-effect waves-light" (click)="give_prize(event)">Update Prizes</a>
+                  <a class="waves-effect waves-light" (click)="see_registrations(event)">See All Registrations</a>
+                  <a class="waves-effect waves-light" (click)="complete_event(event)">Complete Event</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+  </div>
+</div>

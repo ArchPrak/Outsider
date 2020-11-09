@@ -1,68 +1,31 @@
-<body  style="background-color: #00897b;">
-  <div class='row' >
-    <div class="col-md-4 mt-5 mx-auto center">
-      <div class="jumbotron" *ngFor="let event of this.eventData" >
-          <h1 class="style1">{{ event[2] }}</h1><br>
-          <button class="button4"  > Event Type </button>&nbsp; &nbsp; &nbsp; <b> {{ event[4] }}<br><br></b>
-          <button class="button4"> Date </button> &nbsp; &nbsp; &nbsp;<b> {{ event[5] }}<br><br></b>
-          <button class="button4"> Venue </button>&nbsp; &nbsp; &nbsp;<b> {{ event[6] }}<br><br></b>
-          <button class="button4"> Registration Fee</button>&nbsp; &nbsp; &nbsp;<b> Rs. {{ event[7] }}<br><br></b>
-          <button class="button4" > Team Size</button> &nbsp; &nbsp; &nbsp; <b> {{ event[8] }}</b>
+<style>
+  button {
+    margin: 15px;
+  }
+  .box{
+  align-content: center;
+  border-radius: 20px;
+  width: 400px;
+  height: auto;
+  background-color: snow;
+  padding: 10px;
+  opacity: 1;
+  top: 150px;
+  left: 400px;
+  position: fixed;
 
-          <br/><br/><button type='submit' class="btn waves-effect waves-light" (click)="showorg()"> Contact Organiser </button> &nbsp; &nbsp; &nbsp;
-          <br/><br/><button type='submit' class="btn waves-effect waves-light" (click)="teaminp()"> Team Details </button> &nbsp; &nbsp; &nbsp;
-           <br/><br/><button type='submit' class="btn waves-effect waves-light" (click)="regevent()"> Proceed</button> &nbsp; &nbsp; &nbsp;
+}
+</style>
+      <div class="box" *ngFor="let event of this.eventData" >
+          <h1 class="style1" style="text-align: center;">{{ event[2] }}</h1>
+          <div>Event Type: <b>{{ event[4] }}</b></div> 
+          <div>Date:  <b> {{ event[5] }}</b></div>
+          <div>Venue: <b> {{ event[6] }}</b></div>
+          <div>Registration Fee: <b> Rs. {{ event[7] }}</b>
+          <div>Team Size: <b> {{ event[8] }}</b></div>
+          <button type='submit' class="btn waves-effect waves-light" (click)="showorg()"> Contact Organiser </button> &nbsp; &nbsp; &nbsp;
+          <button type='submit' class="btn waves-effect waves-light" (click)="teaminp()"> Team Details </button> &nbsp; &nbsp; &nbsp;<br>
+          <button type='submit' class="btn waves-effect waves-light" (click)="regevent()"> Proceed</button> &nbsp; &nbsp; &nbsp;
+          <button type='submit' class="btn waves-effect waves-light" (click)="goback()"> Back </button>
         </div>
-      </div>
     </div>
-</body>
-
-<!--
-<div class='row' >
-  <div class="col-md-6 mt-5 mx-auto center">
-    <div class="jumbotron">
-      <h3 class="h3 mb-3 font-weight-normal">Create Event</h3>
-
-      <mat-form-field appearance= "null">
-        <mat-label >Event Name:</mat-label>
-         <h1 >{{this.eventData[0][2]}}</h1>
-      </mat-form-field>
-
-      <br>
-      <mat-form-field appearance= "null">
-        <mat-label for="event_type">Event Type:</mat-label>
-         Event Type {{this.eventData[0][4]}}
-      </mat-form-field>
-
-      <br>
-      <mat-form-field appearance= "null">
-        <mat-label for="event_type">Event Type:</mat-label>
-         Date {{this.eventData[0][5]}}
-      </mat-form-field>
-
-      <br>
-      <mat-form-field appearance= "null">
-        <mat-label for="event_type">Event Type:</mat-label>
-         Venue{{this.eventData[0][6]}}
-      </mat-form-field>
-      <br>
-      <mat-form-field appearance= "null">
-        <mat-label for="event_type">Event Type:</mat-label>
-         Registration Fee {{this.eventData[0][7]}}
-      </mat-form-field>
-
-      <br>
-      <mat-form-field appearance= "null">
-        <mat-label for="event_type">Event Type:</mat-label>
-         Team Size {{this.eventData[0][8]}}
-      </mat-form-field>
-
-      <br>
-      <button type="submit" class="btn waves-effect waves-light"  (click)="regevent()">Proceed</button>
-      <button type="submit" class="btn waves-effect waves-light"  (click)="showorg()">Contact Organiser</button>
-      <button type="submit" class="btn waves-effect waves-light"  (click)="teaminp()">Team Details</button>
-
-    </div>
-  </div>
-</div>
--->

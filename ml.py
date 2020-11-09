@@ -10,7 +10,7 @@ def get_vector(s_id, no_of_events):
   current_s_id = [0] * no_of_events
   for x in range(1, no_of_events + 1):
     #check if that student has registered for the event
-    query = "SELECT * from  registration where student_id = " + str(s_id) + " and e_id = " + str(x) + ";"
+    query = "SELECT * from registration where s_id = " + str(s_id) + " and e_id = " + str(x) + ";"
     c.execute(query)
     rows = c.fetchall()
     if(len(rows) != 0):
@@ -60,5 +60,4 @@ for x in range(len(student_ids)):
   values_of_cosine.append(sum(new_arr))
 values_of_cosine, student_info = (list(t) for t in zip(*sorted(zip(values_of_cosine, student_info))))
 student_info.reverse()
-#print(student_info)
-return (jsonify(student_info))
+print(student_info)

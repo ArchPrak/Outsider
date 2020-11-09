@@ -1,42 +1,136 @@
-<style>.style1 {
-  font-family: "Pacifico", sans-serif;
-  text-transform: none!important;
-  color: white;
-}
-</style>
-<body style="background-color: #004d40;">
-  <h1  class="style1" style="color: floralwhite;">You're always a winner! </h1>
-  <hr>
-  <div style="margin-left: 100px;float: left; margin-top: 20px;">
-    <table mat-table class="mat-elevation-z8" style="background-color: #69f0ae;" id="prizes" cellspacing="20" >
-      <tr mat-row>
-        <th mat-header-cell style="font: large;" *ngFor="let column of headers">
-          {{column}}
-        </th>
-      </tr>
-      <tr mat-row *ngFor="let row of this.serverData">
-        <td mat-cell>
-          {{row[0]}}
-        </td>
-        <td mat-cell >
-          {{row[1]}}
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div style="margin-left: 500px;float:left ;margin-top: 20px;">
-    <table mat-table class="mat-elevation-z8" style="background-color: #69f0ae;" id="prizes" cellspacing="20" >
-      <div class="column">
-        <h2>Account Details</h2>
-       <p>First Name :  {{this.info[0][1]}}<br>
-        Last Name: {{this.info[0][2]}}<br>
-        User Id : {{this.info[0][0]}}<br>
-        Email : {{this.info[0][3]}}<br>
-        Phone number; {{this.info[0][5]}}<br>
-        Stream : {{this.info[0][6]}}<br>
-      </p>
-      </div>
-    </table>
-  </div>
-</body>
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Pacifico);
+  table {
+    border-radius: 20px;
+    position: relative;
+    opacity: 0.7;
+    width: 400px;
+  }
+    .row {
+      display: flex;
+    }
 
+  /* Create two equal columns that sits next to each other */
+  .column1, .column2 {
+    flex: 50%;
+    padding: 10px;
+    height: auto; /* Should be removed. Only for demonstration */
+    margin-top: 100px;
+  }
+
+  .column1{
+    position: fixed;
+    left: 100px;
+    top: 70px;
+
+  }
+  .column2{
+  /* position: fixed; */
+    left: 700px;
+    margin-left: 700px;
+    /* top: -5px; */
+  }
+  .box{
+  align-content: center;
+  position: relative;
+  border-radius: 20px;
+  width: 400px;
+  height: auto;
+  background-color: snow;
+  padding: 10px;
+  opacity: 0.7;
+
+}
+
+  /* #card1, #card2 {
+    width: 60%;
+    margin-left: 20%;
+  } */
+
+  .style1 {
+    font-family: "Pacifico", sans-serif;
+    text-transform: none!important;
+    color:white;
+  }
+
+  .row {
+    text-align: center;
+  }
+
+  button {
+    margin: 10px;
+    padding: 10px;
+  }
+
+
+  h1, h2 {
+    text-align: center;
+    padding-top: 30px;
+    opacity: 0.8;
+    color: azure;
+  }
+
+
+
+  /* .style1 {
+    font-family: "Pacifico", sans-serif;
+    text-transform: none!important;
+    color:black;
+  } */
+</style>
+
+<h1 class="style1">You're always a winner!</h1>
+<div class='row'>
+  <div class='column1'>
+    <h2> Prizes you've won </h2>
+    <ul id="outerlist1">
+      <div class="row">
+        <div class="col s12 m6">
+                  <table mat-table [dataSource]="serverData">
+                        <ng-container matColumnDef="event">
+                        <th mat-header-cell *matHeaderCellDef> Event </th>
+                        <td mat-cell *matCellDef="let element"> {{element[0]}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="prize">
+                        <th mat-header-cell *matHeaderCellDef> Prize </th>
+                         <td mat-cell *matCellDef="let element"> {{element[1]}} </td>
+                         </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    </div>
+                  </div>
+    </ul>
+  </div>
+
+<div class="column2">
+  <div class='box'>
+    <h3>Account Details</h3>
+    <ul id="outerlist1">
+        <div class="row">
+          <div class="col s12 m6">
+            <div id="card2">
+              <div>
+                <br>
+                <ul><b><h3 style="font-weight: 800;">{{this.info[0][1]}} {{this.info[0][2]}}</h3></b></ul>
+
+                <ul><h3>Student ID: {{ this.info[0][0] }}</h3></ul>
+                 <ul><h3>Email ID: {{ this.info[0][3] }}</h3></ul>
+                <ul><h3>Phone number: {{ this.info[0][5] }}</h3> </ul>
+                <span><h3><b>---------------------Your Interests---------------------</b></h3> </span>
+                <p *ngFor= "let hobb of this.hobb">
+                  {{hobb}}
+                <p>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </ul>
+  </div>
+  </div>
+
+</div>

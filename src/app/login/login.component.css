@@ -1,0 +1,82 @@
+/* .mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.mat-button {
+  margin-top: 25px;
+} */
+
+.new{
+  margin: 15px;
+  padding: 15px;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.mat-button {
+  margin-top: 25px;
+}
+/* body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  background: #ededed;
+} */
+
+h3{
+  margin-top: 20px;
+  padding-top: 20px;
+  color: grey;
+}
+
+input, button {
+  border: none;
+  outline: none;
+  background: none;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+button{
+  margin-bottom: 25px;
+}
+
+.jumbotron{
+  width: 400px;
+}
+.cont {
+  overflow: hidden;
+  position: relative;
+  width: 900px;
+  height: 900px;
+  margin: 30px auto 100px;
+  background: #fff;
+}
+
+.box{
+  position: relative;
+  border-radius: 20px;
+  width: 400px;
+  height: auto;
+  background-color: snow;
+  padding: 15px;
+  margin-top: 0px;
+  left: -55px;
+  opacity: 0.8;
+}
+
+input {
+  /* display: block; */
+  width: 100%;
+  margin-top: 0px; 
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-size: 16px;
+  border: 0px;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.4); */
+  text-align: center;
+}
+
+.mat-form-field {
+  /* display: block; */
+  width: 260px;
+  margin: 15px auto 0;
+  text-align: center;
+}

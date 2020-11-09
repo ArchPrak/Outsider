@@ -9,19 +9,16 @@ import { StudentService } from '../../student.service';
 @Component({
   selector: 'get-team',
   templateUrl: './get_team.component.html'
- // styleUrls: ['list_event.component.css', '../../../../node_modules/materialize-css/dist/css/materialize.min.css', '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css']
-
-
 })
 
 export class GetTeam{
   message: object;
   serverData: object;
-
+  displayedColumns: object;
   constructor(private httpClient: HttpClient, private data: StudentService, public router: Router) {
-
+    this.displayedColumns = ["Name", "Email"]
   }
-  headers=["Name", "Email"]
+
 
   ngOnInit() {
     this.data.currentMessage.subscribe((message) => this.message = message);

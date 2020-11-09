@@ -74,5 +74,3 @@ export class TeamInput {
     this.dialogRef.close();
   }
 }
-
-

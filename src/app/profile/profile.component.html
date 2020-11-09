@@ -1,5 +1,8 @@
-<h1>Welcome {{ name }}!</h1>
-<button routerLink='/newevent'>Create a new event!</button>
-<button (click)="get_events()">See all events being managed</button>
-
+<h1>Welcome {{ name }}!</h1><br>
+<div class="flex2">
+<button class="waves-effect waves-light btn-large" routerLink='/newevent'>Create a new event!</button>
+<button class="waves-effect waves-light btn-large" (click)="get_events()">See all events being managed</button>
+<button class="waves-effect waves-light btn-large" (click)="get_statistics()">Get Organiser Statistics</button>
+</div>
+<div style="background-image: './more-leaves.jpg';"></div>
 <router-outlet></router-outlet>

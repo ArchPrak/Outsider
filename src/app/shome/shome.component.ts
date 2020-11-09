@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import * as CanvasJS from './canvasjs.min';
 @Component({
   templateUrl: './shome.component.html',
-  styleUrls:['shome.component.css']
+  styleUrls: ['./shome.component.css', '../../../node_modules/materialize-css/dist/css/materialize.min.css', '../../../node_modules/bootstrap/dist/css/bootstrap.min.css']
 })
 
 export class ShomeComponent implements OnInit {
@@ -16,7 +16,6 @@ export class ShomeComponent implements OnInit {
   serverData: object;
   serverData2: JSON;
   serverData3: JSON;
-
   @Output() messageEvent = new EventEmitter();
 
   constructor(private student: StudentService, private ngZone: NgZone, public router: Router, private httpClient: HttpClient) {
@@ -35,8 +34,7 @@ export class ShomeComponent implements OnInit {
         this.serverData2 = data as JSON;
         console.log(this.serverData2);
 
-
-    let chart = new CanvasJS.Chart("chartContainer2", {
+    let chart = new CanvasJS.Chart("chartContainer1", {
       theme: "light2",
       animationEnabled: true,
       exportEnabled: true,
@@ -61,7 +59,7 @@ export class ShomeComponent implements OnInit {
         console.log(this.serverData3);
 
 
-    let chart = new CanvasJS.Chart("chartContainer1", {
+    let chart = new CanvasJS.Chart("chartContainer2", {
       theme: "light2",
       animationEnabled: true,
       exportEnabled: true,
@@ -80,10 +78,6 @@ export class ShomeComponent implements OnInit {
 
     chart.render();
   });
-
-
-
-
   }
   }
 

@@ -1,12 +1,17 @@
-<h1 mat-dialog-title>Hi</h1>
 <div mat-dialog-content>
   <p>How much do you want to allocate?</p>
   <mat-form-field>
+    <mat-label>Reason: </mat-label>
+    <input (change)="mess2()"  type="text" matInput [(ngModel)]="reason" required>
+  </mat-form-field>
+  <mat-form-field>
     <mat-label>Amount: </mat-label>
-    <input matInput [(ngModel)]="amount">
+    <input (change)="mess2()" type="number" matInput [(ngModel)]="amount" required>
   </mat-form-field>
 </div>
+<div *ngIf="message2">{{ message2 }}</div>
+<div *ngIf="message1">{{ message1 }}</div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button (click)="onClick()" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onClick()">Ok</button>
+  <button mat-button (click)="onNoClick()">Close</button>
 </div>

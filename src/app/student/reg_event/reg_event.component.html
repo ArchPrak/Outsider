@@ -1,15 +1,67 @@
-<h2>Register for an event! </h2>
-<hr>
-<h3 id="ev"></h3>
 
-<div *ngFor="let event of this.serverData">
-  <h3>{{ event[2] }}</h3>
-  Event Type: {{ event[4] }} &nbsp; &nbsp; &nbsp;
-  Date: {{ event[5] }} &nbsp; &nbsp; &nbsp;
-  Venue: {{ event[6] }} &nbsp; &nbsp; &nbsp;
-  Fee: Rs. {{ event[7] }} &nbsp; &nbsp; &nbsp;
-  Team Size {{ event[8] }} &nbsp; &nbsp; &nbsp;
-  <button type='submit' (click)="reg_event(event)"> Register </button> &nbsp; &nbsp; &nbsp;
-  <br/><br/>
+<style>
+  .row {
+    display: flex;
+    position: relative;
+    text-align: center;
+  }
+  
+  /* Create two equal columns that sits next to each other */
+  .column {
+    flex: 50%;
+    padding: 10px; /* Should be removed. Only for demonstration */
+    left: 30px;
+  }
+  
+  h3 {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    opacity: 0.8;
+    font-weight: lighter;
+    left: 10%;
+    width: 100px;
+  }
+  
+  #card1, #card2 {
+    position: relative;
+    background-color: black;
+    width: 80%;
+    border-radius: 20px;
+    opacity: 0.7;
+    left: -25%;
+  }
+  
+  button {
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  
+  </style>
 
-</div>
+<div class='row'>
+  <div class='column'>
+    <h3>Upcoming Events</h3>
+      <ul id="outerlist1">
+        <li *ngFor="let event of this.serverData">
+          <div class="row">
+            <div class="col s12 m6">
+              <div class="card" id="card1">
+                <div class="card-content white-text">
+                  <span class="card-title">{{ event[2] }}</span><br>
+                  <ul>Event type: {{ event[4] }} </ul>
+                  <ul>Date: {{ event[5] }}</ul>
+                  <ul>Venue: {{ event[6] }}</ul>
+                  <ul>Fee: Rs. {{ event[7] }} </ul>
+                  <ul>Team Size {{ event[8] }} </ul>
+                </div>
+                <div class="card-action">
+                  <a class="waves-effect waves-light" (click)="reg_event(event)">Register!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+  </div>
+

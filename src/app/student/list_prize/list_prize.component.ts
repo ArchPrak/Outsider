@@ -15,8 +15,10 @@ export class DispPrizes{
   message: object;
   serverData: object;
   info:object;
-
+  hobb:object;
+  displayedColumns: object;
   constructor(private httpClient: HttpClient, private data: StudentService, public router: Router) {
+    this.displayedColumns = ["event", "prize"]
 
   }
   headers=["Event name","Prize"];
@@ -34,6 +36,10 @@ export class DispPrizes{
       this.httpClient.post('http://127.0.0.1:5000/student/info', {'student_id': this.message['s_id']}).subscribe(data => {
         this.info = data as JSON;
         console.log(this.info);
+      });
+      this.httpClient.post('http://127.0.0.1:5000/student/fetchhobbies', {'student_id': this.message['s_id']}).subscribe(data => {
+        this.hobb = data as JSON;
+        console.log(this.hobb);
       });
     };
   }

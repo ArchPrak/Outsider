@@ -1,5 +1,38 @@
-<form [formGroup]="hobbyForm">
-  <label for="hobby">AddHobby:</label>
-  <input formControlName="hobby" type="text" id="hobby" name="hobby" placeholder="Enter Hobby"><br>
-  <button type="submit" (click)="add_hobby()">Submit</button>
-</form>
+<style>
+mat-form-field {
+  margin: 10px;
+}
+.box{
+  align-content: center;
+  position: relative;
+  border-radius: 20px;
+  width: 400px;
+  left: 400px;
+  height: auto;
+  background-color: snow;
+  padding: 10px;
+  margin-top: 50px;
+  opacity: 0.7;
+
+}
+
+.me {
+  text-align: center;
+  color: black;
+  opacity: 0.8;
+  padding-top: 10px;
+}
+</style>
+<div class="box">
+<h2 class="me"> List of hobbies! </h2>
+  <mat-checkbox [(ngModel)]="cChecked" (change)="onCheckboxChagen($event, 'Culnery')">Culnery</mat-checkbox> <br>
+  <mat-checkbox [(ngModel)]="mChecked" (change)="onCheckboxChagen($event, 'Music')">Music</mat-checkbox> <br>
+  <mat-checkbox [(ngModel)]="dChecked" (change)="onCheckboxChagen($event, 'Dance')">Dance</mat-checkbox> <br>
+  <mat-checkbox [(ngModel)]="pChecked" (change)="onCheckboxChagen($event, 'Photography')">Photography</mat-checkbox> <br>
+  <mat-checkbox [(ngModel)]="sChecked" (change)="onCheckboxChagen($event, 'Sports')">Sports</mat-checkbox> <br>
+  <mat-checkbox [(ngModel)]="wChecked" (change)="onCheckboxChagen($event, 'Writing')">Writing</mat-checkbox> <br>
+  <mat-checkbox [(ngModel)]="aChecked" (change)="onCheckboxChagen($event, 'Art')">Art</mat-checkbox> <br>
+  <!-- <input type="checkbox"> bitch </input> -->
+  <br> <br>
+  <button mat-button type="submit" (click)="disp_hobby()">Submit</button>
+</div>

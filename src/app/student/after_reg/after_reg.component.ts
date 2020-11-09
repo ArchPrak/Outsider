@@ -64,7 +64,7 @@ export class AfterReg {
   onClick() {
 
     this.dialogRef.close();
-    this.router.navigateByUrl('/shome');
+    this.router.navigateByUrl('/studentprofile');
   }
 
 }

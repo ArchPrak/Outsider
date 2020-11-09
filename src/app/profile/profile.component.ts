@@ -6,7 +6,8 @@ import {Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  templateUrl: './profile.component.html'
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css', '../../../node_modules/materialize-css/dist/css/materialize.min.css', '../../../node_modules/bootstrap/dist/css/bootstrap.min.css']
 })
 
 export class ProfileComponent implements OnInit {
@@ -32,5 +33,9 @@ export class ProfileComponent implements OnInit {
 
   get_events() {
     this.router.navigateByUrl('/allevents');
-    };
+  };
+
+  get_statistics() {
+    this.router.navigateByUrl('/statistics');
+  }
 }

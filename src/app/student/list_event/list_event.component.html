@@ -1,7 +1,5 @@
-<!--<style>
-  body {background-color: powderblue;}
-  h1   {color: blue;}
-  .row {
+<style>
+.row {
   display: flex;
 }
 
@@ -9,108 +7,77 @@
 .column {
   flex: 50%;
   padding: 10px;
-   /* Should be removed. Only for demonstration */
+  height: 300px; /* Should be removed. Only for demonstration */
 }
 
-</style>-->
-<body  style="background-color: #00897b;">
+h3 {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  opacity: 0.8;
+  padding-top: 50px;
+  font-weight: lighter;
+}
 
-<div class='row'>
-  <div class='column'>
-    <h1 class="style1">Upcoming Events</h1>
-      <ul id="outerlist1">
-        <li *ngFor="let event of this.upcoming">
-          <div class="row">
-            <div class="col s12 m6">
-              <div class="card light-blue lighten-3" id="card1">
-                <div class="card-content">
-                  <span class="card-title">{{ event[2] }}</span>
+#card1, #card2 {
+  background-color: black;
+  width: 80%;
+  margin-left: 20%;
+  border-radius: 20px;
+  opacity: 0.7;
+  left: -40px;
+}
 
-                  <ul>Event Id: {{ event[0] }}</ul>
-                  <ul>Date: {{ event[5] }}</ul>
-                  <ul>Venue: {{ event[6] }}</ul>
-                  <ul>Participants per team: {{ event[8] }} </ul>
+.row {
+  text-align: center;
+}
 
-                </div>
-                <!--<div class="card-action">
-                  <a class="waves-effect waves-light" (click)="fund(event)">Record Expense</a>
-                  <a class="waves-effect waves-light" (click)="expense_log(event)">Expense Log</a>
-                  <a class="waves-effect waves-light" (click)="give_prize(event)">Update Prizes</a>
-                  <a class="waves-effect waves-light" (click)="see_registrations(event)">See All Registrations</a>
-                  <a class="waves-effect waves-light" (click)="complete_event(event)">Complete Event</a>
-                </div>-->
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-  </div>
-  <div class='column'>
-    <h1 class="style1">Past Events</h1>
-      <ul id="outerlist2">
-        <li *ngFor="let event of this.past">
-          <div class="row">
-            <div class="col s12 m6">
-              <div class="card light-blue lighten-3" id="card2">
-                <div class="card-content">
-                  <span class="card-title" >{{ event[2] }}</span>
-                  <ul>Event Id: {{ event[0] }}</ul>
-                  <ul>Date: {{ event[5] }}</ul>
-                  <ul>Venue: {{ event[6] }}</ul>
-                  <ul>Participants per team: {{ event[8] }} </ul>
-
-                </div>
-
-                <!--<div class="card-action">
-                  <a class="waves-effect waves-light" (click)="fund(event)">Record Expense</a>
-                  <a class="waves-effect waves-light" (click)="expense_log(event)">Expense Log</a>
-                  <a class="waves-effect waves-light" (click)="give_prize(event)">Update Prizes</a>
-                  <a class="waves-effect waves-light" (click)="see_registrations(event)">See All Registrations</a>
-                  <a class="waves-effect waves-light" (click)="complete_event(event)">Complete Event</a>
-                </div>-->
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-  </div>
-</div>
+button {
+  margin: 10px;
+  padding: 10px;
+}
 
 
-</body>
-
-
-
-
-
-
-
-<!--
+</style>
   <div class='row'>
   <div class='column'>
-    <h1>Upcoming Events</h1>
+    <h3>Upcoming Events</h3>
     <ul id="outerlist1">
       <li *ngFor="let event of this.upcoming">
-        <ul>{{ event[2] }}</ul>
-        <ul>Event Id: {{ event[0] }}</ul>
-        <ul>Date: {{ event[5] }}</ul>
-        <ul>Venue: {{ event[6] }}</ul>
-        <ul>Participants per team: {{ event[8] }} </ul>
+        <div class="row">
+          <div class="col s12 m6">
+            <div class="card" id="card1">
+              <div class="card-content white-text">
+                <span class="card-title">{{ event[2] }}</span><br>
+                <ul>Event Id: {{ event[0] }}</ul>
+                <ul>Date: {{ event[5] }}</ul>
+                <ul>Venue: {{ event[6] }}</ul>
+                <ul>Participants per team: {{ event[8] }} </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
   <div class='column'>
-    <h1>Events you took part in</h1>
-    <ul id="outerlist2">
-    <li *ngFor="let event of this.past">
-      <ul>{{ event[2] }}</ul>
-      <ul>Event Id: {{ event[0] }}</ul>
-      <ul>Date: {{ event[5] }}</ul>
-      <ul>Venue: {{ event[6] }}</ul>
-      <ul>Participants per team: {{ event[8] }} </ul>
-
+    <h3>Events Already Participated In</h3>
+    <ul id="outerlist1">
+      <li *ngFor="let event of this.past">
+        <div class="row">
+          <div class="col s12 m6">
+            <div class="card" id="card2">
+              <div class="card-content white-text">
+                <span class="card-title">{{ event[2] }}</span><br>
+                <ul>Event Id: {{ event[0] }}</ul>
+                <ul>Date: {{ event[5] }}</ul>
+                <ul>Venue: {{ event[6] }}</ul>
+                <ul>Participants per team: {{ event[8] }} </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
 </div>
-<router-outlet></router-outlet>-->
+<router-outlet></router-outlet>

@@ -1,24 +1,68 @@
-<nav class = "navbar navbar-expand-sm navbar-inverse horizontal">
-  <div class="container-fluid">
-    <div class="justify-component-md-center" id="navbar1">
-      <ul class="nav navbar-nav">
-        <li class="nav-item">
-          <a routerLink='/' class='nav-link'><i>Home</i></a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="!show() && !check()" routerLink='/login' class='nav-link'><i>Login</i></a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="show() && check()" routerLink='/profile' class='nav-link'><i>Profile</i></a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="!show() && !check()" routerLink='/register' class='nav-link'><i>Register</i></a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="show() && check()" routerLink='/' class='nav-link'><i (click)="setempty()">Logout</i></a>
+<nav class = "nav-wrapper teal lighten-2">
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li>
+          <a routerLink='/' class='nav-link'>Home</a>
         </li>
       </ul>
+      <ul class="right hide-on-med-and-down">
+        <li>
+          <a *ngIf="!show() && !show1()" routerLink='/login' class='nav-link'>Login</a>
+        </li>
+        <li>
+          <a *ngIf="!show() && !show1()" routerLink='/register' class='nav-link'>Register</a>
+        </li>
+        <!-- <li>
+          <a *ngIf="show() && !show1()" routerLink='/profile' class='nav-link'>Profile</a>
+        </li> -->
+        <!--
+          Change links for students below, add your own routerLinks
+        -->
+        <!-- <li>
+          <a *ngIf="!show() && show1()" routerLink='/studentprofile' class='nav-link'>Profile</a>
+        </li> -->
+        <li>
+          <a *ngIf="!show() && show1()" class='nav-link'>
+
+           <!--- <i>Dummy2</i>-->
+           <mat-search-bar style="padding: 10px; margin-top: 20px;" [(ngModel)]="searchText"
+              [matAutocomplete]="simpleAuto"
+            ></mat-search-bar>
+
+             <mat-autocomplete #simpleAuto="matAutocomplete">
+              <mat-option *ngFor="let option of this.serverData2 | filter: searchText" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+
+
+          </a>
+        </li>
+
+        <li>
+          <a *ngIf="!show() && show1()" class='nav-link'>
+
+             <span style="padding: 0 10px 0 0;" (click) = "searchevent()">Find Event</span>
+
+
+          </a>
+        </li>
+        <li>
+          <a *ngIf="show() && !show1()" routerLink='/profile' class='nav-link'>Profile</a>
+        </li>
+        <li>
+          <a *ngIf="!show() && show1()" routerLink='/studentprofile' class='nav-link'>Profile</a>
+        </li>
+
+
+        <!-- Till here, after this logout should be present in both -->
+        <li>
+          <a *ngIf="show() || show1()" routerLink='/' class='nav-link'><span (click)="setempty()">Logout</span></a>
+        </li>
+        <li>
+      </ul>
     </div>
-  </div>
 </nav>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<div style="background-image: './more-leaves.jpg';"></div>
 <router-outlet></router-outlet>

@@ -12,7 +12,8 @@ const routes: Routes = [
 
 @Component({
   selector:'login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css', '../../../node_modules/materialize-css/dist/css/materialize.min.css', '../../../node_modules/bootstrap/dist/css/bootstrap.min.css']
 })
 
 
@@ -21,29 +22,37 @@ export class LoginComponent {
   credentialsForm: FormGroup;
   serverData: JSON;
   message: string;
-
+  messagedisp: string;
   constructor(private httpClient: HttpClient, private data: OrganiserService, private data1: StudentService, public router: Router) {
     this.credentialsForm = new FormGroup({
       email: new FormControl(''),
       password: new FormControl(''),
-      account_type: new FormControl('')
+      account_type: new FormControl(''),
+      type_account: new FormControl('')
     });
+
   }
 
-  checkCred(account) {
-      console.log(account);
-      this.httpClient.post('http://127.0.0.1:5000/checkuser', {'email': this.credentialsForm.value["email"], 'password': this.credentialsForm.value["password"] , 'account_type': account}).subscribe(data => {
+  checkCred() {
+      this.httpClient.post('http://127.0.0.1:5000/checkuser', {'email': this.credentialsForm.value["email"], 'password': this.credentialsForm.value["password"] , 'account_type': this.credentialsForm.value["type_account"]}).subscribe(data => {
       this.serverData = data as JSON;
       console.log(this.serverData);
-      if('first_name' in this.serverData && account == "organiser" ) {
+      if('first_name' in this.serverData && this.credentialsForm.value["type_account"] == "organiser" ) {
         this.data.changeMessage(this.serverData);
-        console.log('here');
         this.router.navigate(['/profile']);
       }
-      else if('first_name' in this.serverData && account == "student" ) {
+      else if('first_name' in this.serverData && this.credentialsForm.value["type_account"] == "student" ) {
         this.data1.changeMessage(this.serverData);
-        this.router.navigate(['/shome'])
+        this.router.navigate(['/studentprofile'])
+      }
+      else {
+        this.messagedisp = "Invalid credentials!"
       }
     })
   }
+
+  destroy() {
+    this.messagedisp = "";
+  }
 }
+

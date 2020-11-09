@@ -1,0 +1,36 @@
+.row {
+  display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+h2 {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  opacity: 0.8;
+  padding-top: 50px;
+  font-weight: lighter;
+}
+
+#card1, #card2 {
+  background-color: black;
+  width: 400px;
+  margin-left: 20%;
+  border-radius: 20px;
+  opacity: 0.7;
+  left: -10px;
+}
+
+.row {
+  text-align: center;
+}
+
+button {
+  margin: 10px;
+  padding: 10px;
+}

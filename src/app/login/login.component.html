@@ -1,12 +1,26 @@
-<h2>Login</h2>
-<form [formGroup]="credentialsForm" (submit)="checkCred(op1.checked ? op1.value : op2.value)">
-  <label for="email">Email:</label>
-  <input formControlName="email" type="email" id="email" name="email" placeholder="Enter Email"><br>
-  <label for="password">Password:</label>
-  <input formControlName="password" type="password" id="password" name="password" placeholder="Enter password"><br>
-  <label for="account_type">Sign in as: </label>
-  <input #op1 type="radio" id="organiser" name="account_type" value="organiser">Organiser
-  <input #op2 type="radio" id="student" name="account_type" value="student">Student
-  <br>
-  <button type="submit">Submit</button>
-</form>
+<div class='row' >
+  <div class="col-md-3 mt-5 mx-auto center">
+    <div class="box">
+      <h3>Login</h3>
+      <form [formGroup]="credentialsForm" (submit)="checkCred()">
+        <mat-form-field appearance="null">
+          <mat-label for="email">Email:</mat-label>
+          <input (change)="destroy()" matInput formControlName="email" type="email" id="email" name="email" required><br>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="null">
+          <mat-label for="password">Password:</mat-label>
+          <input (change)="destroy()" matInput formControlName="password" type="password" id="password" name="password" required><br>
+        </mat-form-field>
+        <br>
+          <mat-radio-group formControlName="type_account">
+          <mat-radio-button value="organiser">Organiser</mat-radio-button>
+          <mat-radio-button value="student">Student</mat-radio-button>
+          </mat-radio-group>
+        <br>
+        <div *ngIf="messagedisp"> {{messagedisp}}</div>
+          <button class="btn waves-effect waves-light" mat-button type="submit">Submit</button>
+      </form>
+  </div>
+  </div>
+</div>

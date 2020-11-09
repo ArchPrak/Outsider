@@ -4,5 +4,11 @@ li {
 
 a {
   padding: 15px;
-  background-color: #dddddd;
+  background-color: black;
+  font-style: normal;
+}
+
+.nav-wrapper{
+  opacity: 0.7;
+  height: 11%;
 }

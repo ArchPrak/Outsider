@@ -1,0 +1,10 @@
+<h1 style="color: white; opacity: 0.8; text-align: center; top: 100px; left: 250px;" mat-dialog-title>Your Hobbies!</h1>
+<div mat-dialog-content>
+ <ol>
+    <li *ngFor="let interest of this.data.interests">{{interest}}</li>
+  </ol>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="add_hobby()">Add Hobbies</button>
+  <button mat-button (click)="onNoClick()">Go back</button>
+</div>

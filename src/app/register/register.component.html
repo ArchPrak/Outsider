@@ -1,16 +1,35 @@
-<h2>Register</h2>
+<div class="row">
+  <div class="col-md-3 mt-5 mx-auto center">
+    <div class="box">
+<h3 class="h3 mb-3 font-weight-normal">Register</h3>
 <form [formGroup]="infoForm" (submit)="newUser()">
-  <label for="first_name">First Name:</label>
-  <input formControlName="first_name" type="first_name" id="first_name" name="first_name" placeholder="Enter First Name" required>
+  <mat-form-field appearance="null">
+  <mat-label for="first_name">First Name:</mat-label>
+  <input matInput formControlName="first_name" type="text" id="first_name" name="first_name" required>
+  </mat-form-field>
+  <mat-form-field appearance="null">
+  <mat-label for="last_name">Last Name:</mat-label>
+  <input matInput formControlName="last_name" type="text" id="last_name" name="last_name" required><br>
+  </mat-form-field>
   <br>
-  <label for="last_name">Last Name:</label>
-  <input formControlName="last_name" type="last_name" id="last_name" name="last_name" placeholder="Enter Last Name" required><br>
-  <label for="email">Email:</label>
-  <input formControlName="email" type="email" id="email" name="email" placeholder="Enter Email" required><br>
-  <label for="password">Password:</label>
-  <input formControlName="password" type="password" id="password" name="password" placeholder="Enter password" required><br>
-  <label for="phone_no">Phone no:</label>
-  <input formControlName="phone_no" type="phone_no" id="phone_no" name="phone_no" placeholder="Enter phone number" required><br>
-  <button type="submit" ng-disable="infoForm.$invalid">Submit</button>
+  <mat-form-field appearance="null">
+  <mat-label for="email">Email:</mat-label>
+  <input matInput (change)="messdis()" formControlName="email" type="email" id="email" name="email" required><br>
+  </mat-form-field>
+  <mat-form-field appearance="null">
+  <mat-label for="password">Password:</mat-label>
+  <input matInput formControlName="password" type="password" id="password" name="password" required><br>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="null">
+  <mat-label for="phone_no">Phone no:</mat-label>
+  <input matInput formControlName="phone_no" type="number" id="phone_no" name="phone_no" required><br>
+  </mat-form-field>
+  <br>
+  <div class="new" *ngIf="message"> {{message}} <a routerLink='/login' *ngIf="show">Proceed to Login</a> </div>
+  <button mat-button class="btn waves-effect waves-light" type="submit" ng-disable="infoForm.$invalid">Submit</button>
 </form>
+</div>
+</div>
+</div>
 <router-outlet></router-outlet>

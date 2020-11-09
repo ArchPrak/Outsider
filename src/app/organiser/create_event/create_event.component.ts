@@ -6,7 +6,8 @@ import { OrganiserService } from 'src/app/organiser.service';
 
 
 @Component({
-  templateUrl: './create_event.component.html'
+  templateUrl: './create_event.component.html',
+  styleUrls: ['create_event.component.css', '../../../../node_modules/materialize-css/dist/css/materialize.min.css', '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css']
 })
 
 export class CreateEvent {
@@ -30,6 +31,9 @@ export class CreateEvent {
 
   ngOnInit() {
     this.organiser.currentMessage.subscribe(message => this.message = message);
+    if(Object.keys(this.message).length == 0) {
+      this.router.navigateByUrl('/login');
+    }
   }
 
   newEvent() {

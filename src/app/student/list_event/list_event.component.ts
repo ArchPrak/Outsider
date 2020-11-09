@@ -3,14 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Router, Routes, RouterModule } from '@angular/router';
 import { StudentService } from '../../student.service';
 
-
-
-
 @Component({
   selector: 'all-event',
   templateUrl: './list_event.component.html',
-  styleUrls: ['list_event.component.css', '../../../../node_modules/materialize-css/dist/css/materialize.min.css', '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css']
-
+  styleUrls: ['../../../../node_modules/materialize-css/dist/css/materialize.min.css', '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css']
 })
 
 export class DispEvents {
@@ -18,7 +14,6 @@ export class DispEvents {
   serverData: object;
   past :String[];
   upcoming :String[];
-
 
   constructor(private httpClient: HttpClient, private data: StudentService, public router: Router) {
 
@@ -34,10 +29,7 @@ export class DispEvents {
         this.serverData = data as JSON;
          this.past=this.serverData["past"];
          this.upcoming=this.serverData["upcoming"];
-
       });
     };
   }
-
-
 }

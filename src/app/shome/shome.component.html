@@ -1,16 +1,12 @@
-
-
-<body style="background-color:#00bfa5 ;">
-  <div align="center">
-    <h1 class="style1">Welcome {{ name }}!</h1>
-    <button class="button button1" (click)="get_events()"> See the events</button>
-    <button class="button button1" (click)="add_hobby()"> Add Hobby</button>
-    <button class="button button1" (click)="reg_event()"> Register for an Event</button>
-    <button class="button button1" (click)="get_prizes()"> Profile </button>
-    <button  class="button button1" (click)="get_team()"> Create a team! </button>
-    <br/><br/>
-  </div>
-  <div id="chartContainer1" style="height: 370px;float:left; width: 500px; margin-left: 100px;"></div>
-  <div id="chartContainer2" style="height: 370px; float:left; width: 500px; margin-left: 100px;"></div>
-  <router-outlet></router-outlet>
-</body>
+<h1 class="wel">Welcome {{ name }}!</h1>
+<br>
+<div class="flex2">
+<button class="waves-effect waves-light btn-large" (click)="get_events()"> See the events</button>
+<button class="waves-effect waves-light btn-large" (click)="add_hobby()"> Add Hobby</button>
+<button class="waves-effect waves-light btn-large" (click)="reg_event()"> Register for an Event</button>
+<button class="waves-effect waves-light btn-large" (click)="get_prizes()"> Profile</button>
+<button class="waves-effect waves-light btn-large" (click)="get_team()"> Create a team! </button>
+</div>
+<div id="chartContainer1" style="height: 370px;float:left; width: 500px; margin-left: 100px;"></div>
+<div id="chartContainer2" style="height: 370px; float:left; width: 500px; margin-left: 100px;"></div>
+<router-outlet></router-outlet>
